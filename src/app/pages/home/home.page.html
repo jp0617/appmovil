@@ -1,0 +1,29 @@
+<p>Lista de notas</p>
+
+
+<!--<div *ngFor="let nota of datanotes">
+  <div id="{{nota.noteid}}">
+    <input value="{{nota.notetitle}}" />
+    <input value="{{nota.notedescription}}" />
+  </div>
+</div>-->
+
+<ion-content>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col sizeMd="4" offsetMd="4">
+        <ion-list>
+          <ion-item *ngFor="let nota of datanotes" [routerLink]="['/profile/' + nota.noteid]">
+            <!--<ion-avatar slot="start">
+              <img src="{{character.image}}">
+            </ion-avatar>-->
+            <ion-label>{{nota.notetitle}}</ion-label>
+
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

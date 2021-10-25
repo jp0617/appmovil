@@ -3,11 +3,12 @@ import { NotesService } from 'src/app/services/notes.service';
 
 @Component({
   selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss'],
+  templateUrl: './home.page.html',
+  styleUrls: ['./home.page.scss'],
 })
-export class HomeComponent implements OnInit {
-  DataNotes: any;
+export class HomePage implements OnInit {
+  datanotes: any;
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   constructor(private Notes: NotesService) {}
 
   ngOnInit() {
@@ -17,7 +18,7 @@ export class HomeComponent implements OnInit {
   getnotes = async () => {
     await this.Notes.getnotes().subscribe(
       (res: any) => {
-        this.DataNotes = res;
+        this.datanotes = res;
         console.log(res);
       },
       (err) => {

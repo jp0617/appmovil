@@ -7,20 +7,21 @@ const routes: Routes = [
   {
     path: '',
     redirectTo: '/login',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
   {
-    path:'login',
-    component: LoginComponent
-  },
-  {
-    path:'home',
-    component: HomeComponent
+    path: 'login',
+    component: LoginComponent,
   },
   {
     path: 'tabs',
     loadChildren: () =>
       import('./tabs/tabs.module').then((m) => m.TabsPageModule),
+  },
+  {
+    path: 'home',
+    loadChildren: () =>
+      import('./pages/home/home.module').then((m) => m.HomePageModule),
   },
 ];
 @NgModule({
