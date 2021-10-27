@@ -14,11 +14,11 @@
     <ion-row>
       <ion-col sizeMd="4" offsetMd="4">
         <ion-list>
-          <ion-item *ngFor="let nota of datanotes" [routerLink]="['/profile/' + nota.noteid]">
-            <!--<ion-avatar slot="start">
+          <ion-item *ngFor="let character of datanotes" [routerLink]="['/profile/' + character.id]">
+            <ion-avatar slot="start">
               <img src="{{character.image}}">
-            </ion-avatar>-->
-            <ion-label>{{nota.notetitle}}</ion-label>
+            </ion-avatar>
+            <ion-label>{{character.name}}</ion-label>
 
           </ion-item>
         </ion-list>
