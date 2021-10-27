@@ -18,8 +18,8 @@ export class HomePage implements OnInit {
   getnotes = async () => {
     await this.Notes.getnotes().subscribe(
       (res: any) => {
-        this.datanotes = res;
-        console.log(res);
+        this.datanotes = res.results;
+        console.log(res.results);
       },
       (err) => {
         console.log(err);

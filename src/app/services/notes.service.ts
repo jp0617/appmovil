@@ -6,7 +6,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class NotesService {
-  private url: string = environment.urlapi;
+  private url ='https://rickandmortyapi.com/api/character';
   constructor(private http: HttpClient) {}
 
   getnotes = () => this.http.get<any>(`${this.url}`);
