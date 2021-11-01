@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+  <form [formGroup]="noteform">
+    <ion-card class="text-center">
+      <ion-card-header>
+        <ion-card-title>
+          <ion-input  formControlName="title"></ion-input>
+        </ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-input  formControlName="description"></ion-input>
+      </ion-card-content>
+      <ion-button color="secondary" (click)="this.update()">Actualizar</ion-button>
+    </ion-card>
+  </form>
+</ion-content>

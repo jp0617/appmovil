@@ -1,0 +1,27 @@
+<ion-header class="text-center">
+  <ion-toolbar>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content fullscreen class="text-center">
+  <form [formGroup]="loginform">
+    <br>
+    <br>
+    <ion-item>
+      <ion-icon name="person-circle-outline"></ion-icon>
+      
+      <ion-input formControlName="user" placeholder="Correo"> </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="key-outline"></ion-icon>
+      
+      <ion-input type="password" placeholder="Contraseña"formControlName="pass"> </ion-input>
+    </ion-item>
+  </form>
+  <br>
+  <div class="text-center">
+    <ion-button (click)="this.login()">Iniciar sesion</ion-button>
+  </div>
+</ion-content>
