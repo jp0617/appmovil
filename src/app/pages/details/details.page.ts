@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NotesService } from 'src/app/services/notes.service';
 import { Location } from '@angular/common';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-details',
@@ -22,7 +23,8 @@ export class DetailsPage implements OnInit {
     private notes: NotesService,
     private formBuilder: FormBuilder,
     private router: Router,
-    private location: Location
+    private location: Location,
+    public toastController: ToastController
   ) {
     this.noteform = this.formBuilder.group({
       id: 0,
@@ -59,8 +61,18 @@ export class DetailsPage implements OnInit {
 
   update = async () => {
     await this.notes.updatenote(this.noteform.value).subscribe(
-      (res: any) => {
-        this.location.back();
+      async (res: any) => {
+        const toast = await this.toastController.create({
+          color: 'dark',
+          duration: 2000,
+          message: res.mensaje,
+        });
+
+        await toast.present();
+
+        this.router
+          .navigateByUrl('/', { skipLocationChange: true })
+          .then(() => this.router.navigate(['/home']));
       },
       (err) => {
         console.log(err);

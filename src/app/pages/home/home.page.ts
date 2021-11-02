@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AlertController, ToastController } from '@ionic/angular';
 import { NotesService } from 'src/app/services/notes.service';
 import { environment } from '../../../environments/environment';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-home',
@@ -22,7 +23,8 @@ export class HomePage implements OnInit {
     private Notes: NotesService,
     public alertController: AlertController,
     private router: Router,
-    public toastController: ToastController
+    public toastController: ToastController,
+    private location: Location
   ) {}
 
   ngOnInit() {
