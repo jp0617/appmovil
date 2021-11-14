@@ -17,4 +17,7 @@ export class NotesService {
   auth = (userform) => this.http.post<any>(`${this.url}/auth`, userform);
   createnote = (datanote) => this.http.post<any>(`${this.url}`, datanote);
   updatenote = (noteform) => this.http.put<any>(`${this.url}`, noteform);
+  deletenote = (noteid) => this.http.delete(`${this.url}`, {
+    params: {noteid}
+  });
 }

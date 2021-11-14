@@ -70,9 +70,7 @@ export class DetailsPage implements OnInit {
 
         await toast.present();
 
-        this.router
-          .navigateByUrl('/', { skipLocationChange: true })
-          .then(() => this.router.navigate(['/home']));
+        this.router.navigate(['/home']);
       },
       (err) => {
         console.log(err);

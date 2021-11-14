@@ -32,9 +32,11 @@ export class LoginPage implements OnInit {
         if (res != null) {
           environment.cc = res.id;
           this.router.navigate(['/home']);
+          this.loginform.reset();
         } else {
           alert('revisa tus credenciales');
-        }
+          this.loginform.reset();
+        };
       },
       (err) => {
         console.log(err);

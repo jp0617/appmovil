@@ -32,14 +32,18 @@ export class HomePage implements OnInit {
   }
 
   getnotes = async () => {
-    await this.Notes.getnotes(environment.cc).subscribe(
-      (res: any) => {
-        this.datanotes = res;
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
+    if (environment.cc=='') {
+      this.router.navigate(['/login']);
+    } else {
+      await this.Notes.getnotes(environment.cc).subscribe(
+        (res: any) => {
+          this.datanotes = res;
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+    }
   };
 
   add = async () => {
@@ -79,7 +83,7 @@ export class HomePage implements OnInit {
                 const toast = await this.toastController.create({
                   color: 'dark',
                   duration: 2000,
-                  message: res[0].message,
+                  message: res.message,
                 });
                 await toast.present();
                 this.getnotes();
@@ -97,6 +101,40 @@ export class HomePage implements OnInit {
   };
 
   deletenote = async (id) => {
-    console.log(id);
+    const alert = await this.alertController.create({
+      cssClass: 'ion',
+      header: 'Eliminar Nota',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => {
+            console.log('Cancel');
+          },
+        },
+        {
+          text: 'Eliminar',
+          handler: async () => {
+            await this.Notes.deletenote(id).subscribe(
+              async (res: any) => {
+                const toast = await this.toastController.create({
+                  color: 'dark',
+                  duration: 2000,
+                  message: res.mensaje,
+                });
+                await toast.present();
+                this.getnotes();
+              },
+              (err) => {
+                console.log(err);
+              }
+            );
+          },
+        },
+      ],
+    });
+
+    await alert.present();
   };
 }
